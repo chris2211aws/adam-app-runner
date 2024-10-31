@@ -7,6 +7,15 @@ build:
       - pip install -r requirements.txt
 run:
   runtime-version: 3.8
+  pre-run:
+    - pip install -r requirements.txt
   command: uvicorn --host 0.0.0.0 --port 8080 --log-level info main:app
   network:
     port: 8080
+  env:
+    - name: DEBUG
+      value: "on"
+    - name: SECRET_KEY
+      value: "*"
+    - name: ALLOWED_HOSTS
+      value: "*"
